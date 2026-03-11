@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SAMSUNG Calculator</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+/* BACKGROUND CODE */
+background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+background-size: cover;
+}
+
+/* HEADER - WITH LEFT AND RIGHT IMAGES */
+.header{
+text-align:center;
+background:rgb(101, 67, 33); /* Dark Brown */
+color:white;
+padding:20px;
+border-bottom:4px solid rgb(50, 30, 10);
+position: relative;
+}
+
+/* LEFT IMAGE - BIGGER AND MORE CENTERED */
+.header-left{
+position: absolute;
+left: 50px; /* Moved closer to middle */
+top: 50%;
+transform: translateY(-50%);
+width: 90px; /* Bigger size */
+height: 90px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid white;
+box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* RIGHT IMAGE - BIGGER AND MORE CENTERED */
+.header-right{
+position: absolute;
+right: 50px; /* Moved closer to middle */
+top: 50%;
+transform: translateY(-50%);
+width: 90px; /* Bigger size */
+height: 90px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid white;
+box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.header-content{
+margin: 0 180px; /* Adjusted for new logo positions */
+}
+
+.header h2{
+margin:0;
+}
+
+.header p{
+color:rgb(255, 228, 196);
+font-size:25px;
+}
+
+/* FORM CARD - BROWN BORDER ADDED */
+.card{
+width:400px;
+margin:40px auto;
+background:rgba(255, 255, 255, 0.95);
+padding:25px;
+border-radius:15px;
+border:2px solid rgb(101, 67, 33); 
+color:rgb(50, 50, 50);
+box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.card h3{
+text-align:center;
+color:rgb(101, 67, 33);
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:6px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.row{
+display:flex;
+gap:5px;
+align-items: center;
+}
+
+.row label {
+    width: 50%;
+    font-weight: bold;
+    color: #555;
+}
+
+.row input{
+width:50%;
+}
+
+/* BUTTONS */
+.btns{
+display:flex;
+justify-content:space-between;
+margin-top:15px;
+}
+
+button{
+border:none;
+padding:10px 20px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.save{
+background:rgb(101, 67, 33);
+color: white;
+}
+
+.list{
+background:#00d4c6;
+}
+
+/* DATABASE TABLE */
+.database{
+width:90%;
+margin:30px auto;
+background:#eee;
+border-radius:10px;
+padding:20px;
+border: 1px solid rgb(101, 67, 33);
+}
+
+.database h3{
+margin-top:0;
+color:rgb(101, 67, 33);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
+}
+
+th{
+background:rgb(101, 67, 33);
+color:white;
+}
+
+.pass{
+color:green;
+font-weight:bold;
+}
+
+.fail{
+color:rgb(139, 0, 0);
+font-weight:bold;
+}
+
+/* FOOTER - BROWN COLOR ADDED */
+footer{
+text-align:center;
+color:white;
+padding:30px;
+background:rgb(50, 30, 10);
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="header">
+<!-- LEFT IMAGE - BIGGER AND MORE CENTERED -->
+<img src="https://cdn-icons-png.flaticon.com/512/2997/2997274.png" alt="College Logo Left" class="header-left">
+
+<div class="header-content">
+<h2>PASSI CITY COLLEGE</h2>
+<p>SCHOOL OF INFORMATION AND COMMUNICATION TECHNOLOGY (SOICT)</p>
+<p>ARNOLD A. EUSALA BSIT-3A</p>
+</div>
+
+<!-- RIGHT IMAGE - BIGGER AND MORE CENTERED -->
+<img src="https://cdn-icons-png.flaticon.com/512/2997/2997274.png" alt="College Logo Right" class="header-right">
+</div>
+
+
+<div class="card">
+
+<h3>SAMSUNG CALCULATOR</h3>
+
+<input id="name" placeholder="Student Full Name">
+
+<select id="course">
+<option>Select Course</option>
+<option>BSIT</option>
+<option>BSBA</option>
+<option>BSCRIM</option>
+<option>BSHM</option>
+<option>BSED</option>
+<option>BEED</option>
+</select>
+
+<select id="section">
+<option>Select Section</option>
+<option>Section A</option>
+<option>Section B</option>
+<option>Section C</option>
+<option>Section D</option>
+<option>Section E</option>
+</select>
+
+<div class="row">
+<label>Subject 1</label>
+<input id="g1" placeholder="Grade">
+</div>
+
+<div class="row">
+<label>Subject 2</label>
+<input id="g2" placeholder="Grade">
+</div>
+
+<div class="row">
+<label>Subject 3</label>
+<input id="g3" placeholder="Grade">
+</div>
+
+<div class="row">
+<label>Subject 4</label>
+<input id="g4" placeholder="Grade">
+</div>
+
+<div class="row">
+<label>Subject 5</label>
+<input id="g5" placeholder="Grade">
+</div>
+
+<div class="btns">
+<button class="save" onclick="saveRecord()">SAVE RECORD</button>
+<button class="list">STUDENTS LIST</button>
+</div>
+
+</div>
+
+
+
+<div class="database">
+
+<h3>Student Academic Information</h3>
+
+<input id="search" placeholder="Search name..." onkeyup="searchStudent()">
+
+<br><br>
+
+<table id="table">
+
+<tr>
+<th>Student Details</th>
+<th>IT 101</th>
+<th>IT 102</th>
+<th>GE 1</th>
+<th>GE 2</th>
+<th>GE 3</th>
+<th>Average</th>
+<th>Remarks</th>
+</tr>
+
+</table>
+</div>
+
+
+<footer>
+DEVELOPED BY : ARNOLD A. EUSALA | BSIT 3A
+</footer>
+
+
+
+<script>
+
+function saveRecord(){
+
+let name=document.getElementById("name").value
+let course=document.getElementById("course").value
+let section=document.getElementById("section").value
+
+let g1=parseFloat(document.getElementById("g1").value)
+let g2=parseFloat(document.getElementById("g2").value)
+let g3=parseFloat(document.getElementById("g3").value)
+let g4=parseFloat(document.getElementById("g4").value)
+let g5=parseFloat(document.getElementById("g5").value)
+
+let avg=((g1+g2+g3+g4+g5)/5).toFixed(2)
+
+let remarks=avg>=75?"PASSED":"FAILED"
+
+let table=document.getElementById("table")
+
+let row=table.insertRow()
+
+row.insertCell(0).innerHTML=name+"<br>"+course+" - "+section
+row.insertCell(1).innerHTML=g1
+row.insertCell(2).innerHTML=g2
+row.insertCell(3).innerHTML=g3
+row.insertCell(4).innerHTML=g4
+row.insertCell(5).innerHTML=g5
+row.insertCell(6).innerHTML=avg
+
+let r=row.insertCell(7)
+r.innerHTML=remarks
+r.className=remarks=="PASSED"?"pass":"fail"
+
+}
+
+function searchStudent(){
+
+let input=document.getElementById("search").value.toLowerCase()
+let rows=document.getElementById("table").rows
+
+for(let i=1;i<rows.length;i++){
+
+let name=rows[i].cells[0].innerText.toLowerCase()
+
+if(name.includes(input)){
+rows[i].style.display=""
+}else{
+rows[i].style.display="none"
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
